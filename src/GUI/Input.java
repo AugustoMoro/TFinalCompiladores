@@ -231,13 +231,13 @@ public class Input extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String palavra = jTextField2.getText();
-        if (palavra != null && !palavra.equals("")) {
+        //if (palavra != null && !palavra.equals("")) {
             ControlaAutomato ctr = new ControlaAutomato(t, palavra);
             jButton1.setEnabled(true);
             jTextField1.setEditable(true);
             jButton3.setEnabled(false);
             jTextField2.setEditable(false);
-        }
+        //}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

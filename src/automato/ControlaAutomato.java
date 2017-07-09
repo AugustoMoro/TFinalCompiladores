@@ -29,6 +29,18 @@ public class ControlaAutomato {
     private void executaAutomato(String entrada) {
         String transicoes = "";
         Estado estadoAtual = buscaEstadoInicial();
+        if ((entrada == null || entrada.equals("")) && estadoAtual.iseFinal()) {
+            transicoes += "(" + estadoAtual.getNomeEstado() + ")\n" + "Palavra reconhecida: " + "\n";
+            Saida s = new Saida(transicoes, "");
+            s.setVisible(true);
+            return;
+        }
+        else if((entrada == null || entrada.equals("")) && !estadoAtual.iseFinal()){
+            transicoes += "(" + estadoAtual.getNomeEstado() + ")\n" + "Palavra não reconhecida: " + "\n";
+            Saida s = new Saida(transicoes, "");
+            s.setVisible(true);
+            return;
+        }
         int posicao = 0;
         for (int i = 0; i < entrada.length(); i++) {
             posicao = i;
@@ -44,12 +56,12 @@ public class ControlaAutomato {
                 return;
             }
         }
+        transicoes += "(" + estadoAtual.getNomeEstado() + ")\n";
         if (estadoAtual.iseFinal()) {
             transicoes += "Palavra Reconhecida \n";
             Saida s = new Saida(transicoes, entrada);
             s.setVisible(true);
-        }
-        else if(!estadoAtual.iseFinal()){
+        } else if (!estadoAtual.iseFinal()) {
             transicoes += "Palavra não reconhecida: " + entrada.charAt(posicao) + " Posicao: " + (posicao + 1) + "\n";
             Saida s = new Saida(transicoes, entrada);
             s.setVisible(true);
